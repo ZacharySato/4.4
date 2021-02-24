@@ -50,15 +50,17 @@ public class Calculator {
         if (input.equals(esc)) {
             System.out.println("Завершение работы");
             off = true;
+            valid = false; //костыль
+        } else {
+            valid = input.matches("^[\\-]?[0-9]+(?:[.][0-9]*)?[\\-\\+\\*\\/][\\-]?[0-9]+(?:[.][0-9]*)?$");
+            if (!valid)
+                System.out.println("Некорректный ввод, формат должен соответствовать ОПЕРАНД ОПЕРАТОР ОПЕРАНД, например \"8 * 16.5\" \n" + escM);
         }
-        valid = input.matches("^[\\-]?[0-9]+(?:[.][0-9]*)?[\\-\\+\\*\\/][\\-]?[0-9]+(?:[.][0-9]*)?$");
-        if (!valid)
-            System.out.println("Некорректный ввод, формат должен соответствовать ОПЕРАНД ОПЕРАТОР ОПЕРАНД, например \"8 * 16.5\" \n" + escM);
     }
 
     private void splitInput(String input) {
         String operandBInput = input.replaceAll("^[\\-]?[0-9]+(?:[.][0-9]*)?[\\-\\+\\*\\/]", "");
-        input = input.replaceAll(operandBInput+"$", "");
+        input = input.replaceAll(operandBInput + "$", "");
         this.operator = input.replaceAll("^[\\-]?[0-9]+(?:[.][0-9]*)?", "");
         String operandAInput = input.substring(0, input.length() - 1);
         this.operandA = Double.parseDouble(operandAInput);
