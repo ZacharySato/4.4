@@ -11,8 +11,8 @@ public class Calculator {
     boolean valid;
 
     public void run() {
-        System.out.println("Для рассчета введите выражение в формате ОПЕРАНД ОПЕРАТОР ОПЕРАНД, например \"2 + 6\"");
-        System.out.println(escM);
+        System.out.println("-----------------------------------------------------------------------------------");
+        System.out.println("Для рассчета введите выражение в формате ОПЕРАНД ОПЕРАТОР ОПЕРАНД, например \"2 + 6\" \n" + escM);
         while (!off) {
             Scanner stream = new Scanner(System.in);
             String input;
@@ -53,7 +53,7 @@ public class Calculator {
         }
         valid = input.matches("^[\\-]?[0-9]+(?:[.][0-9]*)?[\\-\\+\\*\\/][\\-]?[0-9]+(?:[.][0-9]*)?$");
         if (!valid)
-            System.out.println("Некорректный ввод, формат должен соответствовать ОПЕРАНД ОПЕРАТОР ОПЕРАНД, например \"8 * 16.5\" \\n" + escM);
+            System.out.println("Некорректный ввод, формат должен соответствовать ОПЕРАНД ОПЕРАТОР ОПЕРАНД, например \"8 * 16.5\" \n" + escM);
     }
 
     private void splitInput(String input) {
