@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    static boolean off = false;
-    static String esc = "Выкл";
-    static String escM = "Для завершения работы введите \"" + esc + "\"";
-    String operator = "";
+    private static final String esc = "Выкл";
+    private static final String escM = "Для завершения работы введите \"" + esc + "\"";
+    String operator;
     double operandA;
     double operandB;
+    boolean off = false;
     boolean valid;
 
     public void run() {
@@ -23,19 +23,19 @@ public class Calculator {
                 splitInput(input);
                 switch (operator) {
                     case ("+"):
-                        Sum sum = new Sum(operandA, operandB);
+                        Operation sum = new Sum(operandA, operandB);
                         System.out.println(sum.execute());
                         break;
                     case ("-"):
-                        Subtraction sub = new Subtraction(operandA, operandB);
+                        Operation sub = new Subtraction(operandA, operandB);
                         System.out.println(sub.execute());
                         break;
                     case ("*"):
-                        Multiplication multi = new Multiplication(operandA, operandB);
+                        Operation multi = new Multiplication(operandA, operandB);
                         System.out.println(multi.execute());
                         break;
                     case ("/"):
-                        Division div = new Division(operandA, operandB);
+                        Operation div = new Division(operandA, operandB);
                         System.out.println(div.execute());
                         break;
                     default:
